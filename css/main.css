@@ -420,6 +420,11 @@ div.svelte-362y77>*, div.svelte-362y77>.form>* {
     padding-right: 1rem;
 }
 
+.chat-buttons-inline .chat-parent {
+    height: calc(100dvh - 192px - var(--input-delta));
+    margin-bottom: var(--input-delta) !important;
+}
+
 .chat-parent.bigchat {
     height: calc(100dvh - 98px - var(--input-delta)) !important;
     margin-bottom: var(--input-delta) !important;
@@ -767,7 +772,7 @@ div.svelte-362y77>*, div.svelte-362y77>.form>* {
     opacity: 0.333;
 }
 
-#chat-tab #chat-buttons {
+#chat-tab:not(.chat-buttons-inline) #chat-buttons {
     display: none !important;
 }
 
@@ -803,7 +808,7 @@ div.svelte-362y77>*, div.svelte-362y77>.form>* {
     padding-right: 1rem;
 }
 
-#chat-input-row.bigchat {
+.chat-buttons-inline #chat-input-row, #chat-input-row.bigchat {
     padding-bottom: 1px !important;
 }
 
@@ -827,9 +832,13 @@ div.svelte-362y77>*, div.svelte-362y77>.form>* {
     }
 }
 
-#chat-col.bigchat {
+#chat-col, #chat-col.bigchat {
     padding-bottom: 80px !important;
 }
+
+/*.chat-buttons-inline {
+    padding-bottom: 80px !important;
+}*/
 
 .message-body ol, .message-body ul {
     margin-top: 0 !important;

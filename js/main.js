@@ -238,7 +238,7 @@ for (i = 0; i < slimDropdownElements.length; i++) {
 // The show/hide events were adapted from:
 // https://github.com/SillyTavern/SillyTavern/blob/6c8bd06308c69d51e2eb174541792a870a83d2d6/public/script.js
 //------------------------------------------------
-var buttonsInChat = document.querySelectorAll("#chat-tab #chat-buttons button");
+var buttonsInChat = document.querySelectorAll("#chat-tab:not(.chat-buttons-inline) #chat-buttons button");
 var button = document.getElementById("hover-element-button");
 var menu = document.getElementById("hover-menu");
 var istouchscreen = (navigator.maxTouchPoints > 0) || "ontouchstart" in document.documentElement;
@@ -273,6 +273,13 @@ if (buttonsInChat.length > 0) {
       thisButton.innerHTML = newText;
     }
   }
+} else {
+    buttonsInChat = document.querySelectorAll("#chat-tab.chat-buttons-inline #chat-buttons button");
+    for (let i = 0; i < buttonsInChat.length; i++) {
+        buttonsInChat[i].textContent = buttonsInChat[i].textContent.replace(/ \(.*?\)/, "");
+    }
+    document.getElementById("chat-col").appendChild(document.getElementById("chat-buttons"));
+    document.getElementById("gr-hover-container").style.display = "none";
 }
 
 function isMouseOverButtonOrMenu() {
